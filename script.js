@@ -44,6 +44,7 @@ async function sha256(message) {
   return hashHex;
 }
 
+
 async function getSHA256Hash() {
   let cached = retrieve('sha256');
   if (cached) {
@@ -87,6 +88,21 @@ pinInput.addEventListener('input', (e) => {
   const { value } = e.target;
   pinInput.value = value.replace(/\D/g, '').slice(0, 3);
 });
+// async function bruteForce() {
+//   const targetHash = await getSHA256Hash();
+//   for (let i = MIN; i <= MAX; i++) {
+//     const guess = i.toString();
+//     const hash = await sha256(guess);
+//     if (hash === targetHash) {
+//       console.log(`🎯 Match found! The number is ${guess}`);
+//       pinInput.value = guess;
+//       test();
+//       return;
+//     }
+//   }
+//   console.log('❌ No match found.');
+// }
+
 
 // attach the test function to the button
 document.getElementById('check').addEventListener('click', test);
